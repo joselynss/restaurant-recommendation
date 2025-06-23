@@ -5,7 +5,7 @@ import os
 import pickle
 import time
 import numpy as np
-from surprise import Dataset, Reader, SVDpp
+from surprise import Dataset, Reader, SVD
 import json
 
 df = pd.read_csv('final_processed_data.csv')
@@ -37,7 +37,7 @@ def recommend_from_favorite_restos(fav_resto_names, df, resto_encoder, model, k=
     reader = Reader(rating_scale=(1, 5))
     trainset = Dataset.load_from_df(temp_df[['User ID', 'Restaurant ID', 'User Rating']], reader).build_full_trainset()
 
-    temp_model = SVDpp(n_factors=200, n_epochs=20, verbose=False)
+    temp_model = SVD(n_factors=200, n_epochs=20, verbose=False)
     temp_model.fit(trainset)
 
     all_restaurant_ids = df['Restaurant ID'].unique()
