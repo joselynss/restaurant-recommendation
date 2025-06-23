@@ -60,7 +60,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 def log_to_google_sheet(selected, recommendations, satisfaction):
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('/Users/joselyn/Downloads/thesis_code2/virtual-dynamo-463017-n3-139684f32bad.json', scope)
+    creds = ServiceAccountCredentials.from_json_keyfile_name('virtual-dynamo-463017-n3-139684f32bad.json', scope)
     client = gspread.authorize(creds)
     sheet = client.open("log_from_user").sheet1
     row = [
