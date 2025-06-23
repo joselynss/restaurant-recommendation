@@ -60,5 +60,5 @@ streamlit run app.py
 ## 🧑‍💻 Author
 
 **Joselyn Setiawan**
-Binus University
+
 Email: *[joselynsetiawan@gmail.com](mailto:joselynsetiawan@gmail.com)*
