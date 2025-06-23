@@ -6,7 +6,6 @@ import pickle
 import time
 import numpy as np
 from surprise import Dataset, Reader, SVDpp
-import sklearn
 
 df = pd.read_csv('final_processed_data.csv')
 all_restaurants = sorted(df['Restaurant Name'].unique())
