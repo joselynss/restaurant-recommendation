@@ -6,6 +6,7 @@ import pickle
 import time
 import numpy as np
 from surprise import Dataset, Reader, SVDpp
+import json
 
 df = pd.read_csv('final_processed_data.csv')
 all_restaurants = sorted(df['Restaurant Name'].unique())
@@ -60,7 +61,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 def log_to_google_sheet(selected, recommendations, satisfaction):
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    creds = ServiceAccountCredentials.from_json_keyfile_name('virtual-dynamo-463017-n3-139684f32bad.json', scope)
+    # creds = ServiceAccountCredentials.from_json_keyfile_name('virtual-dynamo-463017-n3-139684f32bad.json', scope)
+    secrets_dict = st.secrets["gcp_service_account"]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(secrets_dict, scope)
     client = gspread.authorize(creds)
     sheet = client.open("log_from_user").sheet1
     row = [
